@@ -1,0 +1,706 @@
+{
+  "paper": {
+    "name": "A4",
+    "leftMargin": 0.5,
+    "rightMargin": 0.5,
+    "topMargin": 0.5,
+    "bottomMargin": 0.5,
+    "isPortriat": true
+  },
+  "modelVersion": 2.01,
+  "defaultSchema": "Default",
+  "server": {
+    "objectType": "Server_LOGICAL",
+    "name": "Default",
+    "schemas": [
+      {
+        "objectType": "Schema_LOGICAL",
+        "name": "Default",
+        "tables": [
+          {
+            "objectType": "Table_LOGICAL",
+            "name": "Venue",
+            "comment": "",
+            "oldName": "",
+            "fields": [
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Id",
+                "type": "String",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Id"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Proprietário",
+                "type": "String",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Proprietário"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Título",
+                "type": "String",
+                "length": 100,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Título"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Descrição",
+                "type": "String",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "Multiline",
+                "oldName": "Descrição"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Categoria",
+                "type": "String[]",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Categoria"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "CEP",
+                "type": "String",
+                "length": 9,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "CEP"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Endereço",
+                "type": "String",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "Empty",
+                "defaultValue": "Empty String",
+                "comment": "",
+                "oldName": "Endereço"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Número",
+                "type": "String",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Número"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Bairro",
+                "type": "String",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Bairro"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Cidade",
+                "type": "String",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Cidade"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Estado",
+                "type": "String",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "Empty",
+                "defaultValue": "Empty String",
+                "comment": "",
+                "oldName": "Estado"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Telefone",
+                "type": "String",
+                "length": 13,
+                "decimals": 0,
+                "isNullable": true,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Telefone"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Criado",
+                "type": "Datetime",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Criado"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Modificado",
+                "type": "Datetime",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Modificado"
+              }
+            ],
+            "foreignKeys": [
+              {
+                "objectType": "ForeignKey_LOGICAL",
+                "name": "fk_Venue_Appointments_1",
+                "fields": [
+                  "Id"
+                ],
+                "referencedSchema": "Default",
+                "referencedTable": "Appointments",
+                "referencedFields": [
+                  "Venue Id"
+                ],
+                "sourceCardinality": "ZeroOrManyRelationship",
+                "targetCardinality": "OneAndOnlyOneRelationship",
+                "comment": "",
+                "oldName": ""
+              }
+            ],
+            "indexes": [],
+            "uniques": [],
+            "primaryKey": {
+              "objectType": "PrimaryKey_LOGICAL",
+              "name": "",
+              "fields": [
+                "Id"
+              ],
+              "oldName": ""
+            }
+          },
+          {
+            "objectType": "Table_LOGICAL",
+            "name": "User",
+            "comment": "",
+            "oldName": "",
+            "fields": [
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Id",
+                "type": "String",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Id"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "CNPJ",
+                "type": "String",
+                "length": 18,
+                "decimals": 0,
+                "isNullable": true,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "CNPJ"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "CPF",
+                "type": "String",
+                "length": 14,
+                "decimals": 0,
+                "isNullable": true,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "CPF"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Nome",
+                "type": "String",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Nome"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "E-mail",
+                "type": "String",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "E-mail"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Data do Nascimento",
+                "type": "Date",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Data do Nascimento"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Telefone",
+                "type": "String",
+                "length": 13,
+                "decimals": 0,
+                "isNullable": true,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Telefone"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Celular",
+                "type": "String",
+                "length": 14,
+                "decimals": 0,
+                "isNullable": true,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Celular"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Criado",
+                "type": "Datetime",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Criado"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Modificado",
+                "type": "Datetime",
+                "length": 255,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Modificado"
+              }
+            ],
+            "foreignKeys": [
+              {
+                "objectType": "ForeignKey_LOGICAL",
+                "name": "fk_User_Venue_1",
+                "fields": [
+                  "Id"
+                ],
+                "referencedSchema": "Default",
+                "referencedTable": "Venue",
+                "referencedFields": [
+                  "Proprietário"
+                ],
+                "sourceCardinality": "OneAndOnlyOneRelationship",
+                "targetCardinality": "ZeroOrManyRelationship",
+                "comment": "",
+                "oldName": ""
+              },
+              {
+                "objectType": "ForeignKey_LOGICAL",
+                "name": "fk_User_Appointments_1",
+                "fields": [
+                  "Id"
+                ],
+                "referencedSchema": "Default",
+                "referencedTable": "Appointments",
+                "referencedFields": [
+                  "Locatário Id"
+                ],
+                "sourceCardinality": "ZeroOrManyRelationship",
+                "targetCardinality": "OneAndOnlyOneRelationship",
+                "comment": "",
+                "oldName": ""
+              }
+            ],
+            "indexes": [],
+            "uniques": [],
+            "primaryKey": {
+              "objectType": "PrimaryKey_LOGICAL",
+              "name": "",
+              "fields": [
+                "Id"
+              ],
+              "oldName": ""
+            }
+          },
+          {
+            "objectType": "Table_LOGICAL",
+            "name": "Appointments",
+            "comment": "",
+            "oldName": "",
+            "fields": [
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Id",
+                "type": "String",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Id"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Data Disponível",
+                "type": "Datetime",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Data Disponível"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Venue Id",
+                "type": "String",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Venue Id"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Data da Reserva",
+                "type": "Date",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Data da Reserva"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Locatário Id",
+                "type": "String",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Locatário Id"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Preço",
+                "type": "Number",
+                "length": 0,
+                "decimals": 2,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "Real",
+                "oldName": "Preço"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Criado",
+                "type": "Datetime",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Criado"
+              },
+              {
+                "objectType": "TableField_LOGICAL",
+                "name": "Modificado",
+                "type": "Datetime",
+                "length": 0,
+                "decimals": 0,
+                "isNullable": false,
+                "defaultType": "None",
+                "defaultValue": "",
+                "comment": "",
+                "oldName": "Modificado"
+              }
+            ],
+            "foreignKeys": [],
+            "indexes": [],
+            "uniques": [],
+            "primaryKey": {
+              "objectType": "PrimaryKey_LOGICAL",
+              "name": "",
+              "fields": [
+                "Id"
+              ],
+              "oldName": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "diagrams": [
+    {
+      "name": "Diagram 1",
+      "paperWidth": 1,
+      "paperHeight": 1,
+      "tableFont": "Arial Unicode MS",
+      "tableFontSize": 14,
+      "isBalckWhite": false,
+      "showDBSchemaName": false,
+      "showViewRelations": true,
+      "notation": "default",
+      "showFieldComment": false,
+      "showTableComment": false,
+      "shapes": [
+        {
+          "type": "table",
+          "schemaName": "Default",
+          "tableName": "Venue",
+          "x": 210,
+          "y": 430,
+          "width": 200,
+          "height": 330,
+          "isBold": false,
+          "titleColor": {
+            "r": 55,
+            "g": 131,
+            "b": 192,
+            "a": 1
+          }
+        },
+        {
+          "type": "table",
+          "schemaName": "Default",
+          "tableName": "User",
+          "x": 210,
+          "y": 80,
+          "width": 200,
+          "height": 250,
+          "isBold": false,
+          "titleColor": {
+            "r": 55,
+            "g": 131,
+            "b": 192,
+            "a": 1
+          }
+        },
+        {
+          "type": "table",
+          "schemaName": "Default",
+          "tableName": "Appointments",
+          "x": 670,
+          "y": 110,
+          "width": 200,
+          "height": 210,
+          "isBold": false,
+          "titleColor": {
+            "r": 55,
+            "g": 131,
+            "b": 192,
+            "a": 1
+          }
+        }
+      ],
+      "layers": [],
+      "relations": [
+        {
+          "name": "fk_User_Venue_1",
+          "sourceTableName": "User",
+          "sourceSchemaName": "Default",
+          "lineWidth": 1,
+          "visible": true,
+          "vertices": [
+            {
+              "x": 310,
+              "y": 345
+            },
+            {
+              "x": 310,
+              "y": 420
+            },
+            {
+              "x": 310,
+              "y": 420
+            },
+            {
+              "x": 310,
+              "y": 415
+            }
+          ],
+          "label": {
+            "x": 312,
+            "y": 295,
+            "width": 118,
+            "height": 30,
+            "fontName": "Arial Unicode MS",
+            "fontSize": 14,
+            "fontColor": {
+              "r": 51,
+              "g": 51,
+              "b": 51,
+              "a": 1
+            },
+            "isFontBold": false,
+            "isFontItalic": false,
+            "isVisible": false
+          }
+        },
+        {
+          "name": "fk_User_Appointments_1",
+          "sourceTableName": "User",
+          "sourceSchemaName": "Default",
+          "lineWidth": 1,
+          "visible": true,
+          "vertices": [
+            {
+              "x": 425,
+              "y": 210
+            },
+            {
+              "x": 510,
+              "y": 210
+            },
+            {
+              "x": 510,
+              "y": 210
+            },
+            {
+              "x": 655,
+              "y": 210
+            }
+          ],
+          "label": {
+            "x": 415,
+            "y": 172,
+            "width": 171,
+            "height": 30,
+            "fontName": "Arial Unicode MS",
+            "fontSize": 14,
+            "fontColor": {
+              "r": 51,
+              "g": 51,
+              "b": 51,
+              "a": 1
+            },
+            "isFontBold": false,
+            "isFontItalic": false,
+            "isVisible": false
+          }
+        },
+        {
+          "name": "fk_Venue_Appointments_1",
+          "sourceTableName": "Venue",
+          "sourceSchemaName": "Default",
+          "lineWidth": 1,
+          "visible": true,
+          "vertices": [
+            {
+              "x": 425,
+              "y": 600
+            },
+            {
+              "x": 770,
+              "y": 600
+            },
+            {
+              "x": 770,
+              "y": 335
+            }
+          ],
+          "label": {
+            "x": 415,
+            "y": 562,
+            "width": 185,
+            "height": 30,
+            "fontName": "Arial Unicode MS",
+            "fontSize": 14,
+            "fontColor": {
+              "r": 51,
+              "g": 51,
+              "b": 51,
+              "a": 1
+            },
+            "isFontBold": false,
+            "isFontItalic": false,
+            "isVisible": false
+          }
+        }
+      ],
+      "viewRelations": []
+    }
+  ]
+}
