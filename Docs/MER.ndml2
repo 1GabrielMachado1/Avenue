@@ -548,7 +548,7 @@
           "tableName": "User",
           "x": 210,
           "y": 80,
-          "width": 200,
+          "width": 250,
           "height": 250,
           "isBold": false,
           "titleColor": {
@@ -564,7 +564,7 @@
           "tableName": "Appointments",
           "x": 670,
           "y": 110,
-          "width": 200,
+          "width": 230,
           "height": 210,
           "isBold": false,
           "titleColor": {
@@ -627,7 +627,7 @@
           "visible": true,
           "vertices": [
             {
-              "x": 425,
+              "x": 475,
               "y": 210
             },
             {
@@ -644,7 +644,7 @@
             }
           ],
           "label": {
-            "x": 415,
+            "x": 465,
             "y": 172,
             "width": 171,
             "height": 30,
