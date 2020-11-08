@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/appError';
 import { inject, injectable } from 'tsyringe';
 import IUsersRepository from '../repositories/iUsersRepository';
 
@@ -9,5 +10,10 @@ export default class ShowUserService {
         private userRepository: IUsersRepository
     ) { }
 
-    execute = (id: string) => this.userRepository.findOne(id)
+    execute = (userId: string) => {
+
+        if (!userId) throw new AppError('Id do usuário não informado!', 500)
+
+        this.userRepository.findOne(userId)
+    }
 }

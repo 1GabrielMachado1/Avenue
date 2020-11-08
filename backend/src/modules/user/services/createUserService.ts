@@ -15,7 +15,7 @@ export default class CreateUserService {
 
         console.log(user)
 
-        if (!user.id) throw new AppError('Usuário não informado!')
+        if (!user.id) throw new AppError('Usuário não informado!', 500)
 
         this.userRepository.create(user)
     }

@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/appError';
 import { inject, injectable } from 'tsyringe';
 import Venue from '../entities/venue';
 import IVenuesRepository from '../repositories/iVenuesRepository';
@@ -10,5 +11,10 @@ export default class CreateVenueService {
         private venuesRepository: IVenuesRepository
     ) { }
 
-    execute = (venue: Venue) => this.venuesRepository.create(venue);
+    execute = (venue: Venue) => {
+
+        if (!venue.id) throw new AppError('Local não informado!', 500)
+
+        this.venuesRepository.create(venue);
+    }
 }

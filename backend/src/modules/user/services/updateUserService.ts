@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/appError';
 import { inject, injectable } from 'tsyringe';
 import User from '../entities/user';
 import IUsersRepository from '../repositories/iUsersRepository';
@@ -10,5 +11,10 @@ export default class UpdateUserService {
         private userRepository: IUsersRepository
     ) { }
 
-    execute = (user: User) => this.userRepository.update(user)
+    execute = (user: User) => {
+
+        if (!user.id) throw new AppError('Usuário não informado!', 500)
+
+        this.userRepository.update(user)
+    }
 }

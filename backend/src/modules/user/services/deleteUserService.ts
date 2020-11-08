@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/appError';
 import { inject, injectable } from 'tsyringe';
 import IUsersRepository from '../repositories/iUsersRepository';
 
@@ -9,5 +10,10 @@ export default class DeleteUserService {
         private userRepository: IUsersRepository
     ) { }
 
-    execute = (userId: string) => this.userRepository.delete(userId)
+    execute = (userId: string) => {
+
+        if (!userId) throw new AppError('Id do usuário não informado!', 500)
+
+        this.userRepository.delete(userId)
+    }
 }

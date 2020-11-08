@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/appError';
 import { injectable, inject } from 'tsyringe';
 import IVenuesRepository from '../repositories/iVenuesRepository';
 
@@ -9,5 +10,11 @@ export default class DeleteVenueService {
         private venuesRepository: IVenuesRepository
     ) { }
 
-    execute = (venueId: string) => this.venuesRepository.delete(venueId);
+    execute = (venueId: string) => {
+
+        if (!venueId) throw new AppError('Id do local não informado!', 500)
+
+        this.venuesRepository.delete(venueId);
+
+    }
 }
