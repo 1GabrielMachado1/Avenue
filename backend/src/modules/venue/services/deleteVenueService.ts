@@ -12,7 +12,7 @@ export default class DeleteVenueService {
 
     execute = (venueId: string) => {
 
-        if (!venueId) throw new AppError('Id do local não informado!', 500)
+        if (!venueId) throw new AppError('Id do local não informado!')
 
         this.venuesRepository.delete(venueId);
 

@@ -1,4 +1,4 @@
-import User from "../entities/user";
+import User from '../entities/user';
 
 export default interface IUsersRepository {
     findOne(id: string): Promise<User>;

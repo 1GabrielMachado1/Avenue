@@ -13,7 +13,7 @@ export default class CreateVenueService {
 
     execute = (venue: Venue) => {
 
-        if (!venue.id) throw new AppError('Local não informado!', 500)
+        if (!venue.id) throw new AppError('Local não informado!')
 
         this.venuesRepository.create(venue);
     }

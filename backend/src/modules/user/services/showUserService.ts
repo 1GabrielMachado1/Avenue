@@ -4,16 +4,14 @@ import IUsersRepository from '../repositories/iUsersRepository';
 
 @injectable()
 export default class ShowUserService {
-
     constructor(
         @inject('usersRepository')
-        private userRepository: IUsersRepository
+        private userRepository: IUsersRepository,
     ) { }
 
     execute = (userId: string) => {
+        if (!userId) throw new AppError('Id do usuário não informado!');
 
-        if (!userId) throw new AppError('Id do usuário não informado!', 500)
-
-        this.userRepository.findOne(userId)
+        return this.userRepository.findOne(userId);
     }
 }
