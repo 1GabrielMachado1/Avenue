@@ -1,5 +1,6 @@
 import AppError from '@shared/errors/appError';
 import { inject, injectable } from 'tsyringe';
+import ICreateVenueDTO from '../dtos/iCreateVenueDTO';
 import Venue from '../entities/venue';
 import IVenuesRepository from '../repositories/iVenuesRepository';
 
@@ -11,10 +12,12 @@ export default class CreateVenueService {
         private venuesRepository: IVenuesRepository
     ) { }
 
-    execute = (venue: Venue) => {
+    execute = async (venue: ICreateVenueDTO) => {
 
-        if (!venue.id) throw new AppError('Local não informado!')
+        //const foundedVenue = await this.venuesRepository.findById(venue)
 
-        this.venuesRepository.create(venue);
+        //if (foundedUser) throw new AppError('Usuário já existente!');
+
+        return this.venuesRepository.create(venue);
     }
 }

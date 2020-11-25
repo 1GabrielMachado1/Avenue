@@ -9,9 +9,12 @@ export default class ShowUserService {
         private userRepository: IUsersRepository,
     ) { }
 
-    execute = (userId: string) => {
-        if (!userId) throw new AppError('Id do usuário não informado!');
+    execute = async (userId: string) => {
 
-        return this.userRepository.findOne(userId);
+        const user = await this.userRepository.findById(userId)
+
+        if (!user) throw new AppError('Usuário inexistente!')
+
+        return user
     }
 }

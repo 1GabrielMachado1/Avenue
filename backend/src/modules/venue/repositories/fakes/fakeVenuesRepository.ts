@@ -1,5 +1,7 @@
-import Venue from '../entities/venue'
-import IVenuesRepository from './iVenuesRepository'
+import ICreateVenueDTO from '@modules/venue/dtos/iCreateVenueDTO';
+import { uuid } from 'uuidv4';
+import Venue from '../../entities/venue'
+import IVenuesRepository from '../iVenuesRepository'
 
 export default class VenueRepository implements IVenuesRepository {
     private venues: Venue[] = [];
@@ -8,11 +10,22 @@ export default class VenueRepository implements IVenuesRepository {
         return this.venues
     }
 
-    async create(venue: Venue): Promise<Venue> {
+    async findById(id: string): Promise<Venue> {
 
-        this.venues.push(venue)
+        const [venue] = this.venues.filter(u => u.id === id)
 
         return venue
+    }
+
+    async create(venue: ICreateVenueDTO): Promise<Venue> {
+
+        const newVenue = new Venue()
+
+        Object.assign(newVenue, { id: uuid(), ...venue })
+
+        this.venues.push(newVenue)
+
+        return newVenue
     }
 
     async update(venue: Venue): Promise<Venue> {

@@ -1,5 +1,4 @@
-export default class User {
-    id: string;
+export default class ICreateUserDTO {
     cnpj?: string;
     cpf?: string;
     name: string;
@@ -7,6 +6,4 @@ export default class User {
     birthday: string;
     phone: string;
     cellphone: string;
-    created_at: Date;
-    updated_at: Date;
 }

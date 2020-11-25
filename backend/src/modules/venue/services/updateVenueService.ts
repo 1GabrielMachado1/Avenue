@@ -1,5 +1,6 @@
 import AppError from '@shared/errors/appError';
 import { injectable, inject } from 'tsyringe';
+import IUpdateVenueDTO from '../dtos/iUpdateVenueDTO';
 import Venue from '../entities/venue';
 import IVenuesRepository from '../repositories/iVenuesRepository';
 
@@ -11,11 +12,15 @@ export default class UpdateVenueService {
         private venuesRepository: IVenuesRepository
     ) { }
 
-    execute = (venue: Venue) => {
+    execute = async (venue: IUpdateVenueDTO) => {
 
-        if (!venue.id) throw new AppError('Local não informado!')
+        let toBeUpdatedVenue: Venue | undefined;
 
-        this.venuesRepository.update(venue);
+        toBeUpdatedVenue = await this.venuesRepository.findById(venue.id);
+
+        if (!toBeUpdatedVenue) throw new AppError('Estabelecimento inexistente!');
+
+        return await this.venuesRepository.update(venue);
     }
 
 }

@@ -10,11 +10,15 @@ export default class DeleteVenueService {
         private venuesRepository: IVenuesRepository
     ) { }
 
-    execute = (venueId: string) => {
+    execute = async (venueId: string) => {
 
-        if (!venueId) throw new AppError('Id do local não informado!')
+        const toBeDeletedVenue = await this.venuesRepository.findById(venueId);
 
-        this.venuesRepository.delete(venueId);
+        if (!toBeDeletedVenue) throw new AppError('Estabelecimento inexistente!');
+
+        await this.venuesRepository.delete(venueId);
+
+        return toBeDeletedVenue;
 
     }
 }

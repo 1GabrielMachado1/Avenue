@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5", 
-    "module": "commonjs", 
+    "target": "es5",
+    "module": "commonjs",
     "lib": [
       "ES2015",
       "DOM"
     ],
-    "outDir": "./dist", 
+    "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "strictPropertyInitialization": false,
@@ -19,7 +19,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "skipLibCheck": true, 
-    "forceConsistentCasingInFileNames": true 
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }

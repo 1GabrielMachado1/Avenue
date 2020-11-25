@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/appError';
-import User from '../entities/user';
 import IUsersRepository from '../repositories/iUsersRepository';
+import ICreateUserDTO from '../dtos/iCreateUserDTO';
 
 @injectable()
 export default class CreateUserService {
@@ -10,9 +10,12 @@ export default class CreateUserService {
         private userRepository: IUsersRepository,
     ) { }
 
-    execute = (user: User) => {
-        if (!user.id) throw new AppError('Usuário não informado!');
+    execute = async (user: ICreateUserDTO) => {
 
-        this.userRepository.create(user);
+        const foundedUser = await this.userRepository.findByEmail(user.email)
+
+        if (foundedUser) throw new AppError('Usuário já existente!');
+
+        return this.userRepository.create(user);
     }
 }

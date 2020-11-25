@@ -7,11 +7,16 @@ export default class DeleteUserService {
     constructor(
         @inject('usersRepository')
         private userRepository: IUsersRepository,
-    ) {}
+    ) { }
 
-    execute = (userId: string) => {
-        if (!userId) throw new AppError('Id do usuário não informado!');
+    execute = async (userId: string) => {
 
-        this.userRepository.delete(userId);
+        const toBeDeletedUser = await this.userRepository.findById(userId);
+
+        if (!toBeDeletedUser) throw new AppError('Usuário inexistente!');
+
+        await this.userRepository.delete(userId);
+
+        return toBeDeletedUser;
     };
 }

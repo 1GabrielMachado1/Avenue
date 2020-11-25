@@ -9,5 +9,5 @@ export default class ListVenueService {
         private venuesRepository: IVenuesRepository
     ) { }
 
-    execute = () => this.venuesRepository.findAll();
+    execute = async () => await this.venuesRepository.findAll();
 }
