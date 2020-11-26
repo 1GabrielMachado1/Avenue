@@ -5,17 +5,17 @@ import ICreateUserDTO from '../dtos/iCreateUserDTO';
 
 @injectable()
 export default class CreateUserService {
-    constructor(
-        @inject('usersRepository')
-        private userRepository: IUsersRepository,
-    ) { }
+  constructor(
+    @inject('usersRepository')
+    private userRepository: IUsersRepository,
+  ) { }
 
-    execute = async (user: ICreateUserDTO) => {
+  execute = async (user: ICreateUserDTO) => {
 
-        const foundedUser = await this.userRepository.findByEmail(user.email)
+    const foundedUser = await this.userRepository.findByEmail(user.email)
 
-        if (foundedUser) throw new AppError('Usuário já existente!');
+    if (foundedUser) throw new AppError('Usuário já existente!');
 
-        return this.userRepository.create(user);
-    }
+    return this.userRepository.create(user);
+  }
 }

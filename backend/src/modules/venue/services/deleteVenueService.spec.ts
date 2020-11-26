@@ -12,56 +12,56 @@ let deleteVenueService: DeleteVenueService;
 
 describe('delete venue', () => {
 
-    beforeEach(() => {
-        venueRepository = new FakeVenuesRepository();
-        listVenueService = new ListVenueService(venueRepository)
-        createVenueService = new CreateVenueService(venueRepository);
-        deleteVenueService = new DeleteVenueService(venueRepository);
+  beforeEach(() => {
+    venueRepository = new FakeVenuesRepository();
+    listVenueService = new ListVenueService(venueRepository)
+    createVenueService = new CreateVenueService(venueRepository);
+    deleteVenueService = new DeleteVenueService(venueRepository);
+  })
+
+  it('should be able to create a venue', async () => {
+
+    let venue = await createVenueService.execute({
+      ownerId: "456788",
+      title: "Party House",
+      address: "Rua A",
+      number: "123",
+      category: "Categoria A",
+      city: "Guarulhos",
+      description: "Casa de shows",
+      district: "Bairro A",
+      phone: "(11) 8546-9854",
+      state: "São Paulo",
+      zipCode: "05689-845"
     })
 
-    it('should be able to create a venue', async () => {
+    await deleteVenueService.execute(venue.id)
 
-        let venue = await createVenueService.execute({
-            ownerId: "456788",
-            title: "Party House",
-            address: "Rua A",
-            number: "123",
-            category: "Categoria A",
-            city: "Guarulhos",
-            description: "Casa de shows",
-            district: "Bairro A",
-            phone: "(11) 8546-9854",
-            state: "São Paulo",
-            zipCode: "05689-845"
-        })
+    let venues = await listVenueService.execute()
 
-        await deleteVenueService.execute(venue.id)
+    expect(venues).toEqual(expect.arrayContaining([]));
 
-        let venues = await listVenueService.execute()
+  })
 
-        expect(venues).toEqual(expect.arrayContaining([]));
+  it('should not be able to delete a venue because it does not exists', async () => {
 
+    let venue = await createVenueService.execute({
+      ownerId: "456788",
+      title: "Party House",
+      address: "Rua A",
+      number: "123",
+      category: "Categoria A",
+      city: "Guarulhos",
+      description: "Casa de shows",
+      district: "Bairro A",
+      phone: "(11) 8546-9854",
+      state: "São Paulo",
+      zipCode: "05689-845"
     })
 
-    it('should not be able to delete a venue because it does not exists', async () => {
+    await deleteVenueService.execute(venue.id)
 
-        let venue = await createVenueService.execute({
-            ownerId: "456788",
-            title: "Party House",
-            address: "Rua A",
-            number: "123",
-            category: "Categoria A",
-            city: "Guarulhos",
-            description: "Casa de shows",
-            district: "Bairro A",
-            phone: "(11) 8546-9854",
-            state: "São Paulo",
-            zipCode: "05689-845"
-        })
+    await expect(deleteVenueService.execute("456788")).rejects.toBeInstanceOf(AppError)
 
-        await deleteVenueService.execute(venue.id)
-
-        await expect(deleteVenueService.execute("456788")).rejects.toBeInstanceOf(AppError)
-
-    })
+  })
 })

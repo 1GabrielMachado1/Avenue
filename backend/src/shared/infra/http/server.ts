@@ -15,14 +15,14 @@ app.use(router)
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 
-    if (error instanceof AppError) {
-        return res.status(error.statusCode).json({ message: error.message })
-    }
+  if (error instanceof AppError) {
+    return res.status(error.statusCode).json({ message: error.message })
+  }
 
-    console.error(error)
-    return res.status(500).json({ message: 'Unknown error!' })
+  console.error(error)
+  return res.status(500).json({ message: 'Unknown error!' })
 })
 
 app.listen(port, () => {
-    console.log(`Backend is running on port: ${port}`)
+  console.log(`Backend is running on port: ${port}`)
 })

@@ -12,68 +12,68 @@ let createUserService: CreateUserService;
 
 describe('create venue', () => {
 
-    beforeEach(() => {
-        venueRepository = new FakeVenuesRepository();
-        userRepository = new FakeUsersRepository()
-        createVenueService = new CreateVenueService(venueRepository);
-        createUserService = new CreateUserService(userRepository);
+  beforeEach(() => {
+    venueRepository = new FakeVenuesRepository();
+    userRepository = new FakeUsersRepository()
+    createVenueService = new CreateVenueService(venueRepository);
+    createUserService = new CreateUserService(userRepository);
+  })
+
+  it('should be able to create a venue', async () => {
+
+    const user = await createUserService.execute({
+      name: 'Usuário A',
+      cpf: '467.818.448-14',
+      email: 'usuarioA@gmail.com',
+      birthday: '1999-02-02',
+      phone: '(11) 5698-9856',
+      cellphone: '(11) 98547-3958'
+    });
+
+    let venue = await createVenueService.execute({
+      ownerId: user.id,
+      title: "Party House",
+      address: "Rua A",
+      number: "123",
+      category: "Categoria A",
+      city: "Guarulhos",
+      description: "Casa de shows",
+      district: "Bairro A",
+      phone: "(11) 8546-9854",
+      state: "São Paulo",
+      zipCode: "05689-845"
     })
 
-    it('should be able to create a venue', async () => {
+    expect(venue).toHaveProperty("id");
 
-        const user = await createUserService.execute({
-            name: 'Usuário A',
-            cpf: '467.818.448-14',
-            email: 'usuarioA@gmail.com',
-            birthday: '1999-02-02',
-            phone: '(11) 5698-9856',
-            cellphone: '(11) 98547-3958'
-        });
-
-        let venue = await createVenueService.execute({
-            ownerId: user.id,
-            title: "Party House",
-            address: "Rua A",
-            number: "123",
-            category: "Categoria A",
-            city: "Guarulhos",
-            description: "Casa de shows",
-            district: "Bairro A",
-            phone: "(11) 8546-9854",
-            state: "São Paulo",
-            zipCode: "05689-845"
-        })
-
-        expect(venue).toHaveProperty("id");
-
-    })
+  })
 
 
-    // it('should not be able to create a venue because it already exists', async () => {
+  // it('should not be able to create a venue because it already exists', async () => {
 
-    //     const user = await createUserService.execute({
-    //         name: 'Usuário A',
-    //         cpf: '467.818.448-14',
-    //         email: 'usuarioA@gmail.com',
-    //         birthday: '1999-02-02',
-    //         phone: '(11) 5698-9856',
-    //         cellphone: '(11) 98547-3958'
-    //     });
+  //     const user = await createUserService.execute({
+  //         name: 'Usuário A',
+  //         cpf: '467.818.448-14',
+  //         email: 'usuarioA@gmail.com',
+  //         birthday: '1999-02-02',
+  //         phone: '(11) 5698-9856',
+  //         cellphone: '(11) 98547-3958'
+  //     });
 
-    //     await expect(createVenueService.execute({
-    //         ownerId: user.id,
-    //         title: "Party House",
-    //         address: "Rua A",
-    //         number: "123",
-    //         category: "Categoria A",
-    //         city: "Guarulhos",
-    //         description: "Casa de shows",
-    //         district: "Bairro A",
-    //         phone: "(11) 8546-9854",
-    //         state: "São Paulo",
-    //         zipCode: "05689-845"
-    //     })).rejects.toBeInstanceOf(AppError)
+  //     await expect(createVenueService.execute({
+  //         ownerId: user.id,
+  //         title: "Party House",
+  //         address: "Rua A",
+  //         number: "123",
+  //         category: "Categoria A",
+  //         city: "Guarulhos",
+  //         description: "Casa de shows",
+  //         district: "Bairro A",
+  //         phone: "(11) 8546-9854",
+  //         state: "São Paulo",
+  //         zipCode: "05689-845"
+  //     })).rejects.toBeInstanceOf(AppError)
 
-    // })
+  // })
 
 })

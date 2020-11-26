@@ -7,17 +7,17 @@ import IVenuesRepository from '../repositories/iVenuesRepository';
 @injectable()
 export default class CreateVenueService {
 
-    constructor(
-        @inject('venuesRepository')
-        private venuesRepository: IVenuesRepository
-    ) { }
+  constructor(
+    @inject('venuesRepository')
+    private venuesRepository: IVenuesRepository
+  ) { }
 
-    execute = async (venue: ICreateVenueDTO) => {
+  execute = async (venue: ICreateVenueDTO) => {
 
-        //const foundedVenue = await this.venuesRepository.findById(venue)
+    //const foundedVenue = await this.venuesRepository.findById(venue)
 
-        //if (foundedUser) throw new AppError('Usuário já existente!');
+    //if (foundedUser) throw new AppError('Usuário já existente!');
 
-        return this.venuesRepository.create(venue);
-    }
+    return this.venuesRepository.create(venue);
+  }
 }

@@ -7,20 +7,20 @@ import IVenuesRepository from '../repositories/iVenuesRepository';
 @injectable()
 export default class UpdateVenueService {
 
-    constructor(
-        @inject('venuesRepository')
-        private venuesRepository: IVenuesRepository
-    ) { }
+  constructor(
+    @inject('venuesRepository')
+    private venuesRepository: IVenuesRepository
+  ) { }
 
-    execute = async (venue: IUpdateVenueDTO) => {
+  execute = async (venue: IUpdateVenueDTO) => {
 
-        let toBeUpdatedVenue: Venue | undefined;
+    let toBeUpdatedVenue: Venue | undefined;
 
-        toBeUpdatedVenue = await this.venuesRepository.findById(venue.id);
+    toBeUpdatedVenue = await this.venuesRepository.findById(venue.id);
 
-        if (!toBeUpdatedVenue) throw new AppError('Estabelecimento inexistente!');
+    if (!toBeUpdatedVenue) throw new AppError('Estabelecimento inexistente!');
 
-        return await this.venuesRepository.update(venue);
-    }
+    return await this.venuesRepository.update(venue);
+  }
 
 }
